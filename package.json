@@ -8,11 +8,13 @@
   "files": [
     "lib",
     "*.ts",
-    "*.js"
+    "*.js",
+    "*.json"
   ],
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "prepare": "tsc -p tsconfig.json",
+    "install": "tsc -p tsconfig.json",
     "format": "prettier \"lib/**/*.ts\" --write",
     "lint": "eslint 'lib/**/*.ts' --fix",
     "prepublish:next": "npm run build",
