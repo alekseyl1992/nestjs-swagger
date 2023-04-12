@@ -133,7 +133,7 @@ export function replaceImportPath(typeReference: string, fileName: string) {
       throw {};
     }
     require.resolve(importPath);
-    return typeReference.replace('import', 'require');
+    return typeReference;
   } catch (_error) {
     let relativePath = posix.relative(posix.dirname(fileName), importPath);
     relativePath = relativePath[0] !== '.' ? './' + relativePath : relativePath;
@@ -160,8 +160,9 @@ export function replaceImportPath(typeReference: string, fileName: string) {
       }
     }
 
+    relativePath = relativePath.replace(/(.*)", (.*)/, '$1.js", $2');
     typeReference = typeReference.replace(importPath, relativePath);
-    return typeReference.replace('import', 'require');
+    return typeReference;
   }
 }
 
